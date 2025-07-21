@@ -24,6 +24,7 @@ from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 from scipy.stats import zscore
+from imblearn.over_sampling import SMOTE
 
 # Metrics
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix
@@ -83,6 +84,9 @@ print(df.skew(numeric_only=True))
 # Split features and target
 X = df.drop(columns=["Converted"])
 y = df["Converted"]
+
+smote = SMOTE(random_state=42)
+X_resampled, y_resampled = smote.fit_resample(X, y)
 
 # Build preprocessing pipeline
 preprocessor, numeric_features, ordinal_features, nominal_features = build_preprocessing_pipeline(X)
