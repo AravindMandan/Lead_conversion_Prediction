@@ -99,7 +99,7 @@ X_transformed_df = transform_data(X, preprocessor, numeric_features, all_categor
 
 #Applying SMOTE to handle class imbalance for Target Variable
 smote = SMOTE(random_state=42)
-X_transformed_df, y = smote.fit_resample(X_transformed_df, y)
+X_train_transformed, y_train = smote.fit_resample(X_train_transformed, y_train)
 
 # Train models + SHAP
 results, best_models = train_log_and_shap_classification(
