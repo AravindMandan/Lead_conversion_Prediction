@@ -1,0 +1,7 @@
+pandas
+pyarrow
+s3fs
+scikit-learn
+shap
+mlflow
+evidently

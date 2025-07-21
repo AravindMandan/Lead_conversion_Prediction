@@ -1,0 +1,39 @@
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+
+# IDE/Editor settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter data
+.ipynb_checkpoints/
+
+# Model artifacts
+# saved_models/
+# *.pkl
+# *.h5
+# *.joblib
+
+# Data and outputs
+
+mlruns/
+
+
+# Data files
+sample_leads.csv
+sample_leads_renamed.csv
+Lead Scoring.csv
+
+# Documentation
+*.docx
+*.pdf
