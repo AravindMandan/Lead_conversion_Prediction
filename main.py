@@ -85,10 +85,6 @@ print(df.skew(numeric_only=True))
 X = df.drop(columns=["Converted"])
 y = df["Converted"]
 
-#Applying SMOTE to handle class imbalance for Target Variable
-smote = SMOTE(random_state=42)
-X, y= smote.fit_resample(X, y)
-
 # Build preprocessing pipeline
 preprocessor, numeric_features, ordinal_features, nominal_features = build_preprocessing_pipeline(X)
 all_categorical = ordinal_features + nominal_features
@@ -100,6 +96,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=
 X_train_transformed = transform_data(X_train, preprocessor, numeric_features, all_categorical, fit=True)
 X_test_transformed = transform_data(X_test, preprocessor, numeric_features, all_categorical, fit=False)
 X_transformed_df = transform_data(X, preprocessor, numeric_features, all_categorical)
+
+#Applying SMOTE to handle class imbalance for Target Variable
+smote = SMOTE(random_state=42)
+X_transformed_df, y = smote.fit_resample(X_transformed_df, y)
+
 # Train models + SHAP
 results, best_models = train_log_and_shap_classification(
     X_train=X_train_transformed,
