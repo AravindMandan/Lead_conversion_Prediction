@@ -85,8 +85,9 @@ print(df.skew(numeric_only=True))
 X = df.drop(columns=["Converted"])
 y = df["Converted"]
 
+#Applying SMOTE to handle class imbalance for Target Variable
 smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X, y)
+X, y= smote.fit_resample(X, y)
 
 # Build preprocessing pipeline
 preprocessor, numeric_features, ordinal_features, nominal_features = build_preprocessing_pipeline(X)
